@@ -1,7 +1,6 @@
 import { CommonModule, CurrencyPipe } from '@angular/common';
 import { Component, OnInit, computed, inject, signal } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
-import { RouterLink } from '@angular/router';
 import { Brand, Court, PriceQuote, Reservation } from '../../core/models';
 import { PublicService } from '../../core/services/public.service';
 import { SettingsService } from '../../core/services/settings.service';
@@ -12,7 +11,7 @@ import { SpinnerComponent } from '../../ui/atoms/spinner.component';
 @Component({
   selector: 'cs-landing-page',
   standalone: true,
-  imports: [CommonModule, CurrencyPipe, ReactiveFormsModule, RouterLink, ButtonComponent, LogoComponent, SpinnerComponent],
+  imports: [CommonModule, CurrencyPipe, ReactiveFormsModule, ButtonComponent, LogoComponent, SpinnerComponent],
   templateUrl: './landing.page.html',
   styleUrl: './landing.page.scss',
 })
