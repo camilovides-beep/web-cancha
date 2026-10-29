@@ -54,7 +54,7 @@ import { PageHeaderComponent } from '../../ui/molecules/page-header.component';
     <cs-spinner *ngIf="loading()"></cs-spinner>
 
     <div class="cs-card" *ngIf="!loading()">
-      <table class="cs-table cs-table--striped" *ngIf="users().length; else empty">
+      <div class="cs-table-wrap" *ngIf="users().length; else empty"><table class="cs-table cs-table--striped">
         <thead><tr><th>Nombre</th><th>Correo</th><th>Teléfono</th><th>Documento</th><th>Categoría</th><th>Estado</th><th></th></tr></thead>
         <tbody>
           <tr *ngFor="let u of users()">
@@ -70,7 +70,7 @@ import { PageHeaderComponent } from '../../ui/molecules/page-header.component';
             </td>
           </tr>
         </tbody>
-      </table>
+      </table></div>
       <ng-template #empty><cs-empty-state icon="people" title="Sin usuarios"></cs-empty-state></ng-template>
     </div>
   `,

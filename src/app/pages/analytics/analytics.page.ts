@@ -38,7 +38,7 @@ import { PageHeaderComponent } from '../../ui/molecules/page-header.component';
 
         <div class="cs-card">
           <h3>Canchas más reservadas</h3>
-          <table class="cs-table" *ngIf="top().length; else noTop">
+          <div class="cs-table-wrap" *ngIf="top().length; else noTop"><table class="cs-table">
             <thead><tr><th>Cancha</th><th>Reservas</th><th class="right">Ingresos</th></tr></thead>
             <tbody>
               <tr *ngFor="let c of top()">
@@ -47,7 +47,7 @@ import { PageHeaderComponent } from '../../ui/molecules/page-header.component';
                 <td class="right">{{ c.revenue | currency:'COP':'symbol-narrow':'1.0-0' }}</td>
               </tr>
             </tbody>
-          </table>
+          </table></div>
           <ng-template #noTop><p class="text-muted">Sin datos en el período.</p></ng-template>
         </div>
       </div>

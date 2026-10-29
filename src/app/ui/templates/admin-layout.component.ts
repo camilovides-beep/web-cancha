@@ -31,6 +31,7 @@ import { TopbarComponent } from '../organisms/topbar.component';
     .backdrop { display: none; }
     @media (max-width: 900px) {
       .layout { grid-template-columns: 1fr; }
+      .content { padding: 1rem; }
       .side {
         position: fixed; z-index: 1001; width: 260px; transform: translateX(-100%);
         transition: transform .25s ease;

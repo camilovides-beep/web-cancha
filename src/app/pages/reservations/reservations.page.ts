@@ -39,7 +39,7 @@ import { PageHeaderComponent } from '../../ui/molecules/page-header.component';
     <cs-spinner *ngIf="loading()"></cs-spinner>
 
     <div class="cs-card mt-2" *ngIf="!loading()">
-      <table class="cs-table cs-table--striped" *ngIf="items().length; else empty">
+      <div class="cs-table-wrap" *ngIf="items().length; else empty"><table class="cs-table cs-table--striped">
         <thead>
           <tr><th>Cancha</th><th>Cliente</th><th>Inicio</th><th>Horas</th><th>Estado</th><th>Pago</th><th class="right">Total</th><th></th></tr>
         </thead>
@@ -63,7 +63,7 @@ import { PageHeaderComponent } from '../../ui/molecules/page-header.component';
             </td>
           </tr>
         </tbody>
-      </table>
+      </table></div>
       <ng-template #empty>
         <cs-empty-state icon="calendar-x" title="Sin reservas" message="No hay reservas para el filtro seleccionado."></cs-empty-state>
       </ng-template>

@@ -34,10 +34,19 @@ h1, h2, h3, h4, h5 { color: var(--cs-navy-900, #0f3461); font-weight: 600; }
 .text-center { text-align: center; }
 .text-muted { color: var(--cs-gray-600, #6c757d); }
 
+/* Tablas anchas: scroll horizontal DENTRO de la tarjeta, sin desbordar la página */
+.cs-table-wrap { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.cs-table-wrap .cs-table { min-width: max-content; }
+
 @media (max-width: 900px) {
   .grid-4 { grid-template-columns: repeat(2, 1fr); }
   .grid-3 { grid-template-columns: 1fr; }
   .grid-2 { grid-template-columns: 1fr; }
+}
+
+/* Teléfonos pequeños: los stat tiles de 4 columnas pasan a una sola */
+@media (max-width: 560px) {
+  .grid-4 { grid-template-columns: 1fr; }
 }
 
 /* Scroll más discreto */

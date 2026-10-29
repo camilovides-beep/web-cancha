@@ -24,7 +24,7 @@ import { PageHeaderComponent } from '../../ui/molecules/page-header.component';
     <cs-spinner *ngIf="loading()"></cs-spinner>
 
     <div class="cs-card" *ngIf="!loading()">
-      <table class="cs-table cs-table--striped" *ngIf="courts().length; else empty">
+      <div class="cs-table-wrap" *ngIf="courts().length; else empty"><table class="cs-table cs-table--striped">
         <thead>
           <tr><th>Nombre</th><th>Tipo</th><th>Sede</th><th>Tarifa noche (D)</th><th>Estado</th><th></th></tr>
         </thead>
@@ -41,7 +41,7 @@ import { PageHeaderComponent } from '../../ui/molecules/page-header.component';
             </td>
           </tr>
         </tbody>
-      </table>
+      </table></div>
       <ng-template #empty>
         <cs-empty-state icon="geo-alt" title="Sin canchas" message="Crea tu primera cancha o recurso reservable.">
           <a routerLink="/admin/courts/new"><cs-button icon="plus-lg">Nueva cancha</cs-button></a>

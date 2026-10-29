@@ -35,7 +35,7 @@ import { PageHeaderComponent } from '../../ui/molecules/page-header.component';
           <h3>Reservas recientes</h3>
           <a routerLink="/admin/reservations" class="cs-text-sky">Ver todas →</a>
         </div>
-        <table class="cs-table cs-table--striped" *ngIf="recent().length; else noData">
+        <div class="cs-table-wrap" *ngIf="recent().length; else noData"><table class="cs-table cs-table--striped">
           <thead>
             <tr><th>Cancha</th><th>Cliente</th><th>Inicio</th><th>Estado</th><th class="right">Total</th></tr>
           </thead>
@@ -48,7 +48,7 @@ import { PageHeaderComponent } from '../../ui/molecules/page-header.component';
               <td class="right">{{ r.totalAmount | currency:'COP':'symbol-narrow':'1.0-0' }}</td>
             </tr>
           </tbody>
-        </table>
+        </table></div>
         <ng-template #noData><p class="text-muted text-center mt-2">Aún no hay reservas.</p></ng-template>
       </div>
     </ng-container>
