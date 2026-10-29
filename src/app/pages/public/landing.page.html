@@ -93,19 +93,23 @@
         <div *ngIf="error()" class="cs-alert cs-alert-danger mt-2">{{ error() }}</div>
 
         <cs-button class="mt-2" [block]="true" [loading]="busy()" [disabled]="form.invalid"
-                   icon="check2-circle" (clicked)="reserve()">
-          Confirmar reserva
+                   icon="credit-card" (clicked)="reserve()">
+          Reservar y pagar
         </cs-button>
       </form>
     </ng-container>
 
-    <!-- Paso 2: verificación -->
-    <ng-container *ngIf="step() === 'verify'">
-      <h2>Verifica tu reserva</h2>
-      <p class="text-muted">Enviamos un código a tu WhatsApp. Ingrésalo para confirmar.</p>
-      <input class="cs-input code" [formControl]="code" placeholder="Código" maxlength="6" />
-      <div *ngIf="error()" class="cs-alert cs-alert-danger mt-2">{{ error() }}</div>
-      <cs-button class="mt-2" [block]="true" [loading]="busy()" (clicked)="confirmCode()">Verificar</cs-button>
+    <!-- Paso 2: redirección a la pasarela de pago (ePayco) -->
+    <ng-container *ngIf="step() === 'paying'">
+      <div class="done">
+        <cs-spinner></cs-spinner>
+        <h2>Redirigiendo al pago…</h2>
+        <p class="text-muted">Te llevamos a la pasarela segura de ePayco para completar el pago de tu reserva.</p>
+        <div *ngIf="error()" class="cs-alert cs-alert-danger mt-2">{{ error() }}</div>
+        <cs-button *ngIf="checkoutUrl()" variant="primary" icon="box-arrow-up-right" (clicked)="goToCheckout()">
+          Ir a pagar ahora
+        </cs-button>
+      </div>
     </ng-container>
 
     <!-- Paso 3: confirmación -->

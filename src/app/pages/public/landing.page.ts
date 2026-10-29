@@ -26,7 +26,8 @@ export class LandingPage implements OnInit {
 
   readonly quote = signal<PriceQuote | null>(null);
   readonly reservation = signal<Reservation | null>(null);
-  readonly step = signal<'form' | 'verify' | 'done'>('form');
+  readonly step = signal<'form' | 'paying' | 'done'>('form');
+  readonly checkoutUrl = signal<string | null>(null);
   readonly busy = signal(false);
   readonly error = signal<string | null>(null);
   readonly today = new Date().toISOString().slice(0, 10);
@@ -41,7 +42,6 @@ export class LandingPage implements OnInit {
     documentNumber: [''],
   });
 
-  readonly code = this.fb.nonNullable.control('', [Validators.required]);
   readonly selectedCourt = computed(() =>
     this.courts().find((c) => c.id === this.form.controls.courtId.value) ?? null,
   );
@@ -85,36 +85,45 @@ export class LandingPage implements OnInit {
       customerName: v.customerName, customerPhone: v.customerPhone || undefined,
       documentNumber: v.documentNumber || undefined,
     }).subscribe({
-      next: (r) => {
-        this.reservation.set(r);
-        if (r.userPhone) {
-          this.api.sendVerification(r.id).subscribe({ error: () => undefined });
-          this.step.set('verify');
-        } else {
-          this.step.set('done');
-        }
-        this.busy.set(false);
-      },
+      next: (r) => { this.reservation.set(r); this.startPayment(r); },
       error: (err) => { this.busy.set(false); this.error.set(err?.error?.message ?? 'No se pudo crear la reserva'); },
     });
   }
 
-  confirmCode(): void {
-    const r = this.reservation();
-    if (!r || this.code.invalid) return;
-    this.busy.set(true);
-    this.error.set(null);
-    this.api.verify(r.id, this.code.value).subscribe({
-      next: (res) => { this.reservation.set(res); this.step.set('done'); this.busy.set(false); },
-      error: (err) => { this.busy.set(false); this.error.set(err?.error?.message ?? 'Código inválido'); },
+  /** Tras crear la reserva, inicia el pago y redirige al checkout de ePayco. */
+  private startPayment(r: Reservation): void {
+    // Reservas sin costo no pasan por la pasarela.
+    if (!r.totalAmount || r.totalAmount <= 0) {
+      this.busy.set(false);
+      this.step.set('done');
+      return;
+    }
+    this.step.set('paying');
+    this.api.initPayment(r.id).subscribe({
+      next: (p) => {
+        this.busy.set(false);
+        this.checkoutUrl.set(p.checkoutUrl);
+        // Redirección automática a la pasarela segura de ePayco.
+        window.location.href = p.checkoutUrl;
+      },
+      error: (err) => {
+        this.busy.set(false);
+        this.error.set(err?.error?.message ?? 'No se pudo iniciar el pago. Intenta de nuevo.');
+      },
     });
+  }
+
+  /** Botón de respaldo si el navegador bloquea la redirección automática. */
+  goToCheckout(): void {
+    const url = this.checkoutUrl();
+    if (url) window.location.href = url;
   }
 
   restart(): void {
     this.step.set('form');
     this.reservation.set(null);
     this.quote.set(null);
-    this.code.reset('');
+    this.checkoutUrl.set(null);
     this.form.patchValue({ customerName: '', customerPhone: '', documentNumber: '' });
   }
 }

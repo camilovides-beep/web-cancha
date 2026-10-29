@@ -31,4 +31,10 @@ export class PublicService {
   verify(id: string, code: string): Observable<Reservation> {
     return this.http.post<Reservation>(`${this.base}/reservations/${id}/verify`, { code });
   }
+  /** Inicia el pago y devuelve la URL del checkout de ePayco. */
+  initPayment(id: string): Observable<{ reference: string; checkoutUrl: string; status: string }> {
+    return this.http.post<{ reference: string; checkoutUrl: string; status: string }>(
+      `${this.base}/reservations/${id}/payment`, {},
+    );
+  }
 }
