@@ -51,6 +51,7 @@ export class SidebarComponent {
   readonly items: NavItem[] = [
     { label: 'Dashboard', icon: 'speedometer2', route: '/admin' },
     { label: 'Reservas', icon: 'calendar-check', route: '/admin/reservations' },
+    { label: 'Pagos', icon: 'cash-coin', route: '/admin/payments' },
     { label: 'Canchas', icon: 'geo-alt', route: '/admin/courts' },
     { label: 'Usuarios', icon: 'people', route: '/admin/users' },
     { label: 'Analítica', icon: 'bar-chart', route: '/admin/analytics' },

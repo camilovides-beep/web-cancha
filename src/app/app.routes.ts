@@ -18,6 +18,7 @@ export const routes: Routes = [
     children: [
       { path: '', loadComponent: () => import('./pages/dashboard/dashboard.page').then((m) => m.DashboardPage) },
       { path: 'reservations', loadComponent: () => import('./pages/reservations/reservations.page').then((m) => m.ReservationsPage) },
+      { path: 'payments', loadComponent: () => import('./pages/payments/payments.page').then((m) => m.PaymentsPage) },
       { path: 'courts', loadComponent: () => import('./pages/courts/courts-list.page').then((m) => m.CourtsListPage) },
       { path: 'courts/new', loadComponent: () => import('./pages/courts/court-form.page').then((m) => m.CourtFormPage) },
       { path: 'courts/:id', loadComponent: () => import('./pages/courts/court-form.page').then((m) => m.CourtFormPage) },

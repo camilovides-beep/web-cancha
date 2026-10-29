@@ -40,6 +40,10 @@ export class ReservationsService {
     });
     return this.http.get<Reservation[]>(this.base, { params });
   }
+  /** Pagos hechos y confirmados. */
+  payments(): Observable<Reservation[]> {
+    return this.http.get<Reservation[]>(`${this.base}/payments`);
+  }
   get(id: string): Observable<Reservation> {
     return this.http.get<Reservation>(`${this.base}/${id}`);
   }
