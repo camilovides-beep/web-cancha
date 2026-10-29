@@ -18,7 +18,7 @@ const FILES: Record<LogoVariant, string> = {
   standalone: true,
   imports: [CommonModule],
   template: `<img [src]="src" alt="Comfasucre" [style.height.px]="height" />`,
-  styles: [`img { width: auto; display: block; object-fit: contain; }`],
+  styles: [`img { width: auto; max-width: 100%; display: block; object-fit: contain; }`],
 })
 export class LogoComponent {
   @Input() variant: LogoVariant = 'horizontal-color';
