@@ -1,0 +1,86 @@
+// =====================================================================
+// COMFASUCRE · Variables SCSS para Bootstrap 5.3 (Angular, CodeIgniter…)
+// Uso en styles.scss:
+//   @import 'brand/comfasucre-variables';   // ESTE archivo, ANTES de bootstrap
+//   @import 'bootstrap/scss/bootstrap';
+//   @import 'brand/comfasucre-theme';       // (opcional) componentes .cs-*
+// =====================================================================
+
+// Colores institucionales (Manual de Marca 2025)
+$cs-navy:  #19559B !default;  // PANTONE 7686 C
+$cs-sky:   #1FB5E5 !default;  // PANTONE 298 C
+$cs-green: #94BD1F !default;  // PANTONE 375 C
+
+$cs-navy-700:  #14447C !default;
+$cs-navy-900:  #0F3461 !default;
+$cs-sky-700:   #1690B8 !default;
+$cs-green-700: #789A19 !default;
+
+// Mapa Bootstrap
+$primary:   $cs-navy !default;
+$secondary: #6C757D !default;
+$success:   $cs-green-700 !default;   // 700 para contraste AA con texto blanco
+$info:      $cs-sky !default;
+$warning:   #E9A400 !default;
+$danger:    #C8373D !default;
+$light:     #F3F5F7 !default;
+$dark:      $cs-navy-900 !default;
+
+$theme-colors: (
+  "primary":   $primary,
+  "secondary": $secondary,
+  "success":   $success,
+  "info":      $info,
+  "warning":   $warning,
+  "danger":    $danger,
+  "light":     $light,
+  "dark":      $dark,
+  "navy":      $cs-navy,
+  "sky":       $cs-sky,
+  "green":     $cs-green
+) !default;
+
+// Contraste: fuerza texto oscuro sobre azul claro y verde (blanco no cumple AA)
+$min-contrast-ratio: 3 !default;
+$color-contrast-dark: $cs-navy-900 !default;
+
+// Tipografía
+$font-family-sans-serif: 'Poppins', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif !default;
+$headings-font-weight: 600 !default;
+$headings-color: $cs-navy !default;
+$body-color: #495057 !default;
+$body-bg: #F8F9FB !default;
+$link-color: $cs-navy !default;
+$link-hover-color: $cs-sky-700 !default;
+$font-weight-semibold: 600 !default;
+
+// Forma: bordes ovalados
+$border-radius:     .5rem !default;
+$border-radius-sm:  .375rem !default;
+$border-radius-lg:  1rem !default;
+$border-radius-xl:  1.5rem !default;
+$btn-border-radius:     50rem !default;
+$btn-border-radius-sm:  50rem !default;
+$btn-border-radius-lg:  50rem !default;
+$btn-font-weight: 600 !default;
+$btn-padding-x: 1.4rem !default;
+$card-border-radius: 1rem !default;
+$modal-content-border-radius: 1rem !default;
+$input-border-radius: .5rem !default;
+$input-focus-border-color: $cs-sky !default;
+$input-focus-box-shadow: 0 0 0 .25rem rgba($cs-sky, .45) !default;
+$focus-ring-color: rgba($cs-sky, .45) !default;
+
+// Navbar / tablas
+$navbar-dark-color: rgba(#fff, .85) !default;
+$table-th-font-weight: 600 !default;
+
+// Sombras
+$box-shadow-sm: 0 1px 3px rgba(15, 52, 97, .10) !default;
+$box-shadow:    0 4px 12px rgba(15, 52, 97, .10) !default;
+$box-shadow-lg: 0 12px 32px rgba(15, 52, 97, .16) !default;
+
+// Degradados
+$cs-gradient:          linear-gradient(90deg,  $cs-navy 0%, $cs-sky 40%, $cs-sky 70%, $cs-green 100%);
+$cs-gradient-diagonal: linear-gradient(135deg, $cs-navy 0%, $cs-sky 45%, $cs-green 100%);
+$cs-gradient-blue:     linear-gradient(135deg, $cs-navy 0%, $cs-sky 100%);

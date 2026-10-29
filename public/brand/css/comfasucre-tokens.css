@@ -1,0 +1,135 @@
+/* =====================================================================
+   COMFASUCRE · Design tokens (Manual de Marca 2025)
+   Importar PRIMERO, antes de cualquier hoja de componentes.
+   Prefijo `--cs-` = Comfasucre. También expone variables `--bs-` para
+   que Bootstrap 5.3 adopte la marca sin recompilar SCSS.
+   ===================================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap');
+
+:root {
+  /* ---- Colores institucionales (Pantone → RGB del manual) ---- */
+  --cs-navy:        #19559B;   /* PANTONE 7686 C · Azul marino · R25 G85 B155  */
+  --cs-sky:         #1FB5E5;   /* PANTONE 298 C  · Azul claro  · R31 G181 B229 */
+  --cs-green:       #94BD1F;   /* PANTONE 375 C  · Verde       · R148 G189 B31 */
+
+  --cs-navy-rgb:    25, 85, 155;
+  --cs-sky-rgb:     31, 181, 229;
+  --cs-green-rgb:   148, 189, 31;
+
+  /* Tintes y sombras derivados (hover, fondos suaves, bordes) */
+  --cs-navy-900:    #0F3461;
+  --cs-navy-700:    #14447C;
+  --cs-navy-500:    var(--cs-navy);
+  --cs-navy-300:    #6F93C2;
+  --cs-navy-100:    #DCE6F3;
+  --cs-navy-50:     #F0F4FA;
+
+  --cs-sky-700:     #1690B8;
+  --cs-sky-500:     var(--cs-sky);
+  --cs-sky-300:     #7AD3F0;
+  --cs-sky-100:     #D6F1FB;
+  --cs-sky-50:      #EDF9FE;
+
+  --cs-green-700:   #789A19;
+  --cs-green-500:   var(--cs-green);
+  --cs-green-300:   #BBD56F;
+  --cs-green-100:   #EDF4D4;
+  --cs-green-50:    #F7FAEB;
+
+  /* ---- Grises (color secundario del manual) ---- */
+  --cs-gray-900:    #212529;
+  --cs-gray-800:    #343A40;
+  --cs-gray-700:    #495057;   /* texto de párrafo */
+  --cs-gray-600:    #6C757D;   /* texto secundario */
+  --cs-gray-500:    #ADB5BD;
+  --cs-gray-400:    #CED4DA;   /* bordes */
+  --cs-gray-300:    #DEE2E6;
+  --cs-gray-200:    #E9ECEF;
+  --cs-gray-100:    #F3F5F7;   /* fondos de sección */
+  --cs-gray-50:     #F8F9FB;   /* fondo de app */
+  --cs-white:       #FFFFFF;
+
+  /* ---- Colores funcionales (NO están en el manual; mínimos para UI) ---- */
+  --cs-success:     var(--cs-green-700);
+  --cs-info:        var(--cs-sky);
+  --cs-warning:     #E9A400;
+  --cs-danger:      #C8373D;
+
+  /* ---- Degradados (azul marino 30% · azul claro 55% · verde 15%) ---- */
+  --cs-gradient:          linear-gradient(90deg,  var(--cs-navy) 0%, var(--cs-sky) 40%, var(--cs-sky) 70%, var(--cs-green) 100%);
+  --cs-gradient-diagonal: linear-gradient(135deg, var(--cs-navy) 0%, var(--cs-sky) 45%, var(--cs-green) 100%);
+  --cs-gradient-radial:   radial-gradient(circle at 25% 30%, var(--cs-navy) 0%, var(--cs-sky) 55%, var(--cs-green) 100%);
+  --cs-gradient-blue:     linear-gradient(135deg, var(--cs-navy) 0%, var(--cs-sky) 100%);   /* banner #LaCajaDeTodos */
+  --cs-gradient-soft:     linear-gradient(135deg, var(--cs-white) 0%, var(--cs-gray-100) 100%);
+
+  /* ---- Tipografía: Poppins (Indian Type Foundry) ---- */
+  --cs-font:            'Poppins', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
+  --cs-font-weight-light:    300;
+  --cs-font-weight-regular:  400;
+  --cs-font-weight-medium:   500;
+  --cs-font-weight-semibold: 600;
+  --cs-font-weight-bold:     700;
+
+  --cs-text-xs:   .75rem;
+  --cs-text-sm:   .875rem;
+  --cs-text-base: 1rem;
+  --cs-text-lg:   1.125rem;
+  --cs-text-xl:   1.375rem;
+  --cs-text-2xl:  1.75rem;
+  --cs-text-3xl:  2.25rem;
+  --cs-text-4xl:  3rem;
+
+  /* ---- Forma: el manual usa cajas con bordes ovalados ---- */
+  --cs-radius-sm:   .5rem;
+  --cs-radius:      1rem;
+  --cs-radius-lg:   1.5rem;
+  --cs-radius-pill: 50rem;
+
+  --cs-shadow-sm: 0 1px 2px rgba(15, 52, 97, .06), 0 1px 3px rgba(15, 52, 97, .10);
+  --cs-shadow:    0 4px 12px rgba(15, 52, 97, .10);
+  --cs-shadow-lg: 0 12px 32px rgba(15, 52, 97, .16);
+
+  /* ---- Espaciado base ---- */
+  --cs-space-1: .25rem; --cs-space-2: .5rem; --cs-space-3: .75rem; --cs-space-4: 1rem;
+  --cs-space-5: 1.5rem; --cs-space-6: 2rem;  --cs-space-8: 3rem;   --cs-space-10: 4rem;
+
+  /* ---- Semántica de superficie ---- */
+  --cs-bg:            var(--cs-gray-50);
+  --cs-surface:       var(--cs-white);
+  --cs-text:          var(--cs-gray-700);
+  --cs-heading:       var(--cs-navy);
+  --cs-border:        var(--cs-gray-300);
+  --cs-link:          var(--cs-navy);
+  --cs-link-hover:    var(--cs-sky-700);
+  --cs-focus-ring:    0 0 0 .25rem rgba(var(--cs-sky-rgb), .45);
+
+  /* ---- Puente Bootstrap 5.3 (sin recompilar SCSS) ---- */
+  --bs-primary:          var(--cs-navy);
+  --bs-primary-rgb:      var(--cs-navy-rgb);
+  --bs-secondary:        var(--cs-gray-600);
+  --bs-secondary-rgb:    108, 117, 125;
+  --bs-success:          var(--cs-green-700);
+  --bs-success-rgb:      120, 154, 25;
+  --bs-info:             var(--cs-sky);
+  --bs-info-rgb:         var(--cs-sky-rgb);
+  --bs-warning:          var(--cs-warning);
+  --bs-warning-rgb:      233, 164, 0;
+  --bs-danger:           var(--cs-danger);
+  --bs-danger-rgb:       200, 55, 61;
+  --bs-light:            var(--cs-gray-100);
+  --bs-dark:             var(--cs-navy-900);
+  --bs-body-font-family: var(--cs-font);
+  --bs-body-color:       var(--cs-text);
+  --bs-body-bg:          var(--cs-bg);
+  --bs-heading-color:    var(--cs-heading);
+  --bs-link-color:       var(--cs-link);
+  --bs-link-color-rgb:   var(--cs-navy-rgb);
+  --bs-link-hover-color: var(--cs-link-hover);
+  --bs-link-hover-color-rgb: 22, 144, 184;
+  --bs-border-color:     var(--cs-border);
+  --bs-border-radius:    var(--cs-radius-sm);
+  --bs-border-radius-lg: var(--cs-radius);
+  --bs-border-radius-xl: var(--cs-radius-lg);
+  --bs-border-radius-pill: var(--cs-radius-pill);
+  --bs-focus-ring-color: rgba(var(--cs-sky-rgb), .45);
+}
